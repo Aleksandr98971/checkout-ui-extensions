@@ -1,0 +1,29 @@
+type = "checkout_ui_extension"
+name = "modal-with-text"
+
+extension_points = [
+  'Checkout::Dynamic::Render'
+]
+
+[settings]
+   [[settings.fields]]
+   key = "text"
+   type = "single_line_text_field"
+   name = "Text"
+   description = "Use {{link}}, which will display a link to open the popup. The use of {{link}} is required"
+
+   [[settings.fields]]
+      key = "link_text"
+      type = "single_line_text_field"
+      name = "Link text"
+
+   [[settings.fields]]
+      key = "modal_text"
+      type = "multi_line_text_field"
+      name = "Modal text"
+
+   [[settings.fields]]
+      key = "province_codes"
+      type = "single_line_text_field"
+      name = "Province codes"
+      description = "Enter province codes. Use ', ' to separate. For example: CA, FL, NY"
