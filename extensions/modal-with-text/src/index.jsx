@@ -12,42 +12,42 @@ import {
 render('Checkout::Dynamic::Render', () => <App/>);
 
 function App() {
-    const {text, link_text, modal_text, province_codes} = useSettings();
-
-    if (!text || text.split('{{link}}').length !== 2 | !link_text || !modal_text || !province_codes) {
-        return null;
-    }
-
+    const {main_text, link_text, modal_text, province_codes} = useSettings();
     const {provinceCode} = useShippingAddress();
-    const provinceCodesArray = province_codes.split(', ');
-    const isProvinceCode = provinceCodesArray.includes(provinceCode);
+
+    const text = main_text ?? "";
+    const linkText = link_text ?? "link";
+    const modalText = modal_text ?? "";
+    const provinceCodes = province_codes ?? "";
+
+    const isProvinceCode = provinceCodes.includes(provinceCode);
+    const textParts = text.split(/( +)/);
 
     if (!isProvinceCode) {
         return null;
     }
 
-    const textParts = text.split('{{link}}');
+    const modalComponent = (
+        <Modal padding>
+            <TextBlock>
+                {modalText}
+            </TextBlock>
+        </Modal>
+    );
+
+    const linkComponent = (
+        <Link overlay={modalComponent}>
+            {linkText}
+        </Link>
+    );
 
     return (
         <BlockStack>
             <TextBlock>
                 {
-                    textParts.map((textPart, index) => (
-                        index === 0
-                            ? textPart
-                            : (<>
-                                <Link overlay={
-                                    <Modal padding>
-                                        <TextBlock>
-                                            {modal_text}
-                                        </TextBlock>
-                                    </Modal>
-                                }>
-                                    {link_text}
-                                </Link>
-                                {textPart}
-                            </>)
-                    ))
+                    textParts.map(textPart => {
+                        return textPart.includes('{{link}}') ? linkComponent : textPart
+                    })
                 }
             </TextBlock>
         </BlockStack>

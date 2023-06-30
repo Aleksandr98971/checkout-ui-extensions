@@ -7,10 +7,10 @@ extension_points = [
 
 [settings]
    [[settings.fields]]
-   key = "text"
+   key = "main_text"
    type = "single_line_text_field"
    name = "Text"
-   description = "Use {{link}}, which will display a link to open the popup. The use of {{link}} is required"
+   description = "Use {{link}}, which will display a link to open the popup."
 
    [[settings.fields]]
       key = "link_text"
