@@ -1,0 +1,41 @@
+type = "checkout_ui_extension"
+name = "upsell-product"
+
+extension_points = [
+    'Checkout::CartLines::RenderAfter'
+]
+
+[capabilities]
+api_access = true
+
+[settings]
+  [[settings.fields]]
+    key = "upsellProductVariantID"
+    type = "variant_reference"
+    name = "Upsell product"
+    description = "Select the product variant to be added to the order"
+
+  [[settings.fields]]
+    key = "isAddUpsellProductToRelatedProducts"
+    type = "boolean"
+    name = "Add upsell product to related products"
+    description = "If this option is enabled, the upsell product will be added to the order only if any of the products specified in the 'Related products IDs' field is on the order"
+
+  [[settings.fields]]
+  key = "relatedProductsIDs"
+  type = "multi_line_text_field"
+  name = "Related products IDs"
+  description = "Specify the ID of the products. Use ', ' to separate. For example '8373717795133, 8373717500221'"
+
+
+  [[settings.fields]]
+    key = "upsellProductBannerTitle"
+    type = "single_line_text_field"
+    name = "Upsell product banner title"
+    description = "The banner will be displayed after the upsell product is added to the order. Enter a title for the banner"
+
+  [[settings.fields]]
+    key = "upsellProductBannerDescription"
+    type = "single_line_text_field"
+    name = "Upsell product banner description"
+    description = "Enter a description for the banner"
