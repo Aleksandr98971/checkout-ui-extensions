@@ -1,0 +1,6 @@
+{
+  "errorMessageGeneral": "Some of the fields contain invalid values",
+  "errorMessageAddresses1": "The address field contains unavailable values: [forbidden_values]",
+  "errorMessageAddresses2": "The address field contains unavailable values: [forbidden_values]",
+  "errorMessageZipCodeSetting": "The field contains an unavailable zip code"
+}

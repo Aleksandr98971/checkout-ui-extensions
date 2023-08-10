@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "checkout-ui-extensions-4"
+client_id = "c9f7c57ed703fe69d7677454c7e70302"
+application_url = "https://publicity-search-minor-embassy.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://publicity-search-minor-embassy.trycloudflare.com/auth/callback",
+  "https://publicity-search-minor-embassy.trycloudflare.com/auth/shopify/callback",
+  "https://publicity-search-minor-embassy.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-07"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "develop-checkout-extensions.myshopify.com"
